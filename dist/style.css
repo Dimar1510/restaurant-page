@@ -44,7 +44,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-width: 250px;
+    flex: 1 0 250px;
 }
 
 .logo-img span {
@@ -108,7 +108,7 @@ button {
 /* PAGES ---------------------------------------- */
 
 .main {
-    flex: 1;
+    flex: 8;
     background-color: var(--primary-clr);
     position: relative;
 }
@@ -138,6 +138,7 @@ button {
     background: url(images/mae-mu-I7A_pHLcQK8-unsplash.jpg) no-repeat;
     opacity: 0.1;
     background-size: cover;
+    background-position: center;
 }
 
 .page-home{
