@@ -1,0 +1,169 @@
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+:root {
+    --bg-clr: #333;
+    --primary-clr: #223347;
+    --secondary-clr: #121d29;
+    --accent-clr: #84a943;
+}
+
+@font-face {
+    font-family: intro-rust;
+    src: url('fonts/introrustg-base2line-webfont.woff2') format('woff2'),
+         url('fonts/introrustg-base2line-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: oswald;
+    src: url('fonts/Oswald-VariableFont_wght.ttf');
+}
+
+body {
+    font-family: oswald, sans-serif;
+    height: 100vh;
+    color: white;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+}
+
+/* SIDEBAR ---------------------------------------- */
+
+.sidebar {
+    background: var(--secondary-clr);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 250px;
+}
+
+.logo-img span {
+    padding: 1rem;
+    font-size: 5rem;
+    user-select: none;
+}
+
+.sidebar-menu ul{
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+
+}
+
+.sidebar-menu li {
+    padding-block: 0.5rem;
+    transition: 0.3s ease-in-out;
+}
+
+.sidebar-menu li:hover {
+    box-shadow: 0 2px 0 0 var(--accent-clr)
+}
+
+.sidebar-menu li.active {
+    color: var(--accent-clr);
+}
+
+.sidebar-menu li:hover {
+    cursor: pointer;
+}
+
+button {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--accent-clr);
+    color: var(--accent-clr);
+    background: none;
+    cursor: pointer;
+    background-color: var(--secondary-clr);
+}
+
+.sidebar-info {
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 1rem;
+}
+
+.sidebar-info .adress {
+    text-align: center;
+}
+
+
+/* PAGES ---------------------------------------- */
+
+.main {
+    flex: 1;
+    background-color: var(--primary-clr);
+    position: relative;
+}
+
+.main > *:not(.active, .background) {
+    display: none;
+}
+
+.main > * :not(.background){
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(images/mae-mu-I7A_pHLcQK8-unsplash.jpg) no-repeat;
+    opacity: 0.1;
+    background-size: cover;
+}
+
+.page-home{
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; 
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.title h1 {
+    font-family: intro-rust;
+    font-size: 5rem;
+    font-weight: 100;
+}
+
+.title h2 {
+    font-family: intro-rust, sans-serif;
+    font-weight: 100;
+    font-size: 2rem;
+}
+
