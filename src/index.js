@@ -1,4 +1,4 @@
-
+import "./style.css";
 import createPage from "./mainContent";
 
 export default function createDiv(className) {
