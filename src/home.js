@@ -1,4 +1,6 @@
 import createDiv from ".";
+import { openPage } from "./sidebar";
+
 
 function createTitle() {
     const title = createDiv('title');
@@ -14,6 +16,7 @@ function createLink() {
     const menuLink = createDiv('menu-link');
     const btn = document.createElement('button');
     btn.textContent = 'Check our menu';
+    menuLink.onclick = () => openPage('menu');
     menuLink.append(btn);
     return menuLink;
 }

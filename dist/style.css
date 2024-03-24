@@ -27,13 +27,12 @@
 
 body {
     font-family: oswald, sans-serif;
-    height: 100vh;
     color: white;
 }
 
 .content {
     display: flex;
-    height: 100%;
+    min-height: 100vh;
 }
 
 /* SIDEBAR ---------------------------------------- */
@@ -67,10 +66,21 @@ body {
 .sidebar-menu li {
     padding-block: 0.5rem;
     transition: 0.3s ease-in-out;
+    position: relative;
 }
 
-.sidebar-menu li:hover {
-    box-shadow: 0 2px 0 0 var(--accent-clr)
+.sidebar-menu li:hover:before {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    box-shadow: 0px 0px 0px 1px;
+    animation: slidein 0.5s;
+}
+
+@keyframes slidein {
+    from {width: 0;}
+    to {width: 100%;}
 }
 
 .sidebar-menu li.active {
@@ -82,6 +92,7 @@ body {
 }
 
 button {
+    font-family: oswald, sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -90,6 +101,7 @@ button {
     background: none;
     cursor: pointer;
     background-color: var(--secondary-clr);
+    font-size: 1.2rem;
 }
 
 .sidebar-info {
@@ -108,6 +120,9 @@ button {
 /* PAGES ---------------------------------------- */
 
 .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     flex: 8;
     background-color: var(--primary-clr);
     position: relative;
@@ -117,9 +132,7 @@ button {
     display: none;
 }
 
-.main > * :not(.background){
-    animation: fadein 1s;
-}
+
 
 @keyframes fadein {
     0% {
@@ -139,32 +152,189 @@ button {
     opacity: 0.1;
     background-size: cover;
     background-position: center;
+    z-index: 0;
 }
 
-.page-home{
-    position: relative;
-    height: 100%;
+.main > *.active:not(.background){
+    animation: fadein 1.5s;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem; 
+    height: 100%;
+    z-index: 1;
+}
+
+.page-home {
+    gap: 3rem;
 }
 
 .title {
     text-align: center;
     text-transform: uppercase;
+    
 }
 
 .title h1 {
     font-family: intro-rust;
     font-size: 5rem;
-    font-weight: 100;
+    font-weight: 50;
 }
 
 .title h2 {
     font-family: intro-rust, sans-serif;
-    font-weight: 100;
+    font-weight: 50;
     font-size: 2rem;
 }
+
+/* Menu ---------------------------------------- */
+.page-menu h2 {
+    text-align: center;
+    padding-bottom: 2rem;
+    font-size: 3rem;
+}
+
+.page-menu .content-page {
+    min-width: 300px;
+    
+    max-width: 1200px;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.res-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 4rem;
+    column-gap: 2rem;
+}
+
+.res-menu .item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.item h3 {
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid white;
+    font-size: 2rem;
+    font-family: intro-rust;
+    font-weight: 50;
+}
+
+.item p {
+    padding-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.item span {
+    font-size: 2rem;
+    color: var(--accent-clr);
+}
+
+/* About ---------------------------------------- */
+
+.about-img {
+    background: url(images/christina-rumpf-gRMTVZTxQXM-unsplash.jpg) no-repeat;
+    flex: 1;
+    background-size: cover;
+    flex-basis: 200px;
+}
+
+.page-about .content-page {
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    width: clamp(300px, 50%, 100%);
+    flex-wrap: wrap;
+}
+
+.page-about p {
+   flex: 1;
+   flex-basis: 200px;
+}
+/* Contact ---------------------------------------- */
+
+.page-contact .content-page {
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    opacity: 1;
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: clamp(300px, 50%, 100%);
+}
+
+.map-container {
+    background: url(images/map.JPG) no-repeat;
+    background-size:cover;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-width: 250px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 1rem;
+}
+
+.contact-info > div::first-line {
+    color: var(--accent-clr);
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+    text-transform: uppercase;
+}
+
+.contact-right {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.contact-right input, textarea {
+    padding: 0.5rem;
+}
+
+.contact-right textarea {
+    height: 200px;
+    resize: none;
+}
+
+.contact-logo {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-logo span {
+    padding: 1rem;
+    font-size: 5rem;
+    user-select: none;
+}
+
+.contact-right form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
 
